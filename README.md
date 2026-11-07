@@ -1,13 +1,19 @@
-# Estudo — Carta para a Venerável Nichimyo
+# Carta para a Venerável Nichimyo — Espírito de Procura
 
-Pacote estático pronto para publicação no GitHub Pages. O estudo está em `index.html`; as imagens do material original já estão incorporadas no arquivo, e três imagens são carregadas de `meubs.com.br`.
+Estudo responsivo em português, publicado pelo GitHub Pages. O menu de seções abre como painel recolhível à esquerda.
 
-## Publicar no GitHub Pages
+## Arquivos
 
-1. No GitHub, crie um repositório. Escolha a conta e a visibilidade desejadas; um site Pages pode ficar acessível publicamente.
-2. Envie `index.html` e `README.md` para a raiz do repositório e faça o commit na branch `main`.
-3. Abra **Settings → Pages**.
-4. Em **Build and deployment**, escolha **Deploy from a branch**; selecione `main` e a pasta `/(root)`, depois clique em **Save**.
-5. Aguarde a publicação. O endereço aparecerá na própria página **Settings → Pages**; para um repositório chamado `estudo-nichimyo`, normalmente será `https://SEU-USUARIO.github.io/estudo-nichimyo/`.
+- `index.html`: texto, diagramação e navegação.
+- `assets/`: três imagens locais otimizadas para a abertura.
 
-As imagens hospedadas em `meubs.com.br` dependem de esse site permanecer disponível. As demais imagens estão embutidas em `index.html`.
+As imagens das páginas 14–17 do suplemento estão embutidas no HTML. Três outras imagens do material complementar continuam carregadas de `meubs.com.br` e dependem da disponibilidade desse site.
+
+## Publicação
+
+O repositório é público para permitir o Pages no plano atual do GitHub.
+
+1. Abra **Settings → Pages**.
+2. Em **Build and deployment**, escolha **Deploy from a branch**.
+3. Selecione a branch `main` e a pasta `/(root)`; clique em **Save**.
+4. Aguarde o GitHub concluir o build. O site ficará em <https://arnishi.github.io/estudo-carta-nichimyo/>.

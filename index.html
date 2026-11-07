@@ -17,11 +17,14 @@ html{scroll-behavior:smooth;scroll-padding-top:82px}
 body{margin:0;background:#f3f6fa;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.72}
 a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:3px}
 a:hover{color:var(--navy)}
-.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.topbar-inner{max-width:920px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1160px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{font-size:.76rem;font-weight:800;letter-spacing:.13em;color:var(--navy);text-transform:uppercase}
 .actions{display:flex;gap:8px}
 .small-btn{border:1px solid var(--line);background:white;color:var(--navy);padding:7px 11px;border-radius:999px;font-size:.78rem;font-weight:700;cursor:pointer}
+.menu-toggle{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.menu-backdrop{display:none;position:fixed;inset:58px 0 0;z-index:30;border:0;background:rgba(15,31,49,.34);cursor:default}
+body.menu-open .menu-backdrop{display:block}
 .shell{max-width:920px;margin:24px auto;padding:0 16px 70px}
 .hero{background:linear-gradient(135deg,#153c6b,#286cae);color:#fff;border-radius:26px;padding:34px 28px 30px;box-shadow:var(--shadow);overflow:hidden;position:relative}
 .hero:after{content:"";position:absolute;width:250px;height:250px;border:1px solid rgba(255,255,255,.18);border-radius:50%;right:-75px;top:-110px;box-shadow:0 0 0 25px rgba(255,255,255,.04),0 0 0 55px rgba(255,255,255,.035)}
@@ -30,12 +33,20 @@ h1{font-size:clamp(2rem,6vw,3.45rem);line-height:1.08;letter-spacing:-.04em;marg
 .hero p{max-width:680px;color:#e5f0fb;font-size:1.04rem;margin:0}
 .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .pill{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.1);padding:5px 10px;border-radius:999px;font-size:.78rem}
-.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;margin-top:24px;align-items:start}
-.toc{position:sticky;top:72px;background:white;border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:var(--shadow)}
+.layout{display:block;margin-top:24px}
+.toc{position:fixed;left:0;top:58px;bottom:0;width:min(280px,86vw);z-index:35;overflow-y:auto;background:white;border:1px solid var(--line);border-left:0;border-radius:0 18px 18px 0;padding:17px;box-shadow:var(--shadow);transform:translateX(-105%);visibility:hidden;transition:transform .22s ease,visibility .22s ease}
+body.menu-open .toc{transform:translateX(0);visibility:visible}
+.toc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.toc-close{font-size:.72rem;padding:6px 9px}
+.toc nav{display:grid;gap:3px}
 .toc strong{display:block;color:var(--navy);margin:0 0 8px;font-size:.9rem}
 .toc a{display:block;text-decoration:none;font-size:.82rem;color:#43546a;padding:7px 8px;border-radius:9px;line-height:1.35}
 .toc a:hover{background:var(--sky);color:var(--navy)}
 .content{min-width:0}
+.opening-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0}
+.opening-gallery figure{margin:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#f7f9fc}
+.opening-gallery img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.opening-gallery figcaption{padding:8px 10px;color:var(--muted);font-size:.76rem;line-height:1.35}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,32px);margin-bottom:18px;box-shadow:var(--shadow)}
 .kicker{color:var(--blue);font-size:.75rem;text-transform:uppercase;letter-spacing:.13em;font-weight:800}
 h2{font-size:clamp(1.45rem,4vw,2rem);line-height:1.2;color:var(--navy);letter-spacing:-.025em;margin:7px 0 16px}
@@ -79,16 +90,19 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
  .shell{margin:14px auto;padding:0 11px 45px}
  .hero{border-radius:19px;padding:26px 21px}
  .layout{display:block;margin-top:14px}
- .toc{position:relative;top:auto;margin-bottom:14px;padding:12px}
- .toc nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:3px}
- .toc a{white-space:nowrap;background:#f4f7fb;padding:8px 10px}
+ .toc{top:54px;width:min(290px,88vw);padding:14px}
+ .menu-backdrop{top:54px}
  .card{border-radius:17px;padding:19px;margin-bottom:13px}
  .grid2,.two-images{grid-template-columns:1fr}
  .topbar-inner{padding:9px 12px}
+ .brand{font-size:.66rem;letter-spacing:.08em}
+ .menu-toggle{padding:7px 9px}
+ .opening-gallery{grid-template-columns:1fr;gap:10px}
+ .opening-gallery img{aspect-ratio:16/9}
 }
 @media print{
  body{background:white}
- .topbar,.toc,.actions{display:none!important}
+ .topbar,.menu-backdrop,.toc,.actions{display:none!important}
  .shell{max-width:none;margin:0;padding:0}
  .layout{display:block}
  .hero,.card{box-shadow:none;break-inside:avoid}
@@ -102,6 +116,7 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
 <body>
 <header class="topbar">
  <div class="topbar-inner">
+  <button class="small-btn menu-toggle" id="menuToggle" type="button" aria-controls="study-toc" aria-expanded="false" aria-label="Abrir menu do estudo">☰ <span>Menu</span></button>
   <div class="brand">Caderno de estudo · Espírito de procura</div>
   <div class="actions">
    <button class="small-btn" onclick="window.print()">Imprimir / PDF</button>
@@ -109,6 +124,7 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
   </div>
  </div>
 </header>
+<button class="menu-backdrop" id="menuBackdrop" type="button" aria-label="Fechar menu" tabindex="-1"></button>
 <div class="shell" id="topo">
  <section class="hero">
   <div class="eyebrow">Estudo budista · Novembro de 2026</div>
@@ -122,9 +138,9 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
  </section>
 
  <div class="layout">
-  <aside class="toc">
-   <strong>Neste estudo</strong>
-   <nav>
+  <aside class="toc" id="study-toc" aria-label="Menu do estudo">
+   <div class="toc-head"><strong>Neste estudo</strong><button class="small-btn toc-close" id="menuClose" type="button">Fechar</button></div>
+   <nav aria-label="Seções do estudo">
     <a href="#abertura">Abertura</a>
     <a href="#etapa1">1 · Japão em 1272</a>
     <a href="#etapa2">2 · Exílio em Sado</a>
@@ -143,9 +159,21 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
    <section class="card" id="abertura">
     <div class="kicker">Ponto de partida</div>
     <h2>O que significa buscar o caminho?</h2>
-    <p class="lead">O espírito de procura não é apenas vontade de aprender. É uma condição de vida ativa, renovada e dedicada: a decisão de buscar os ensinamentos, aprofundar a fé e transformar aquilo que compreendemos em ações concretas.</p>
-    <p>O material de novembro propõe uma pergunta essencial: essa disposição é algo com que nascemos ou algo que desenvolvemos? A trajetória de Nichimyo oferece uma resposta por meio de sua própria atitude. Em vez de esperar circunstâncias favoráveis, ela se moveu para encontrar Nichiren Daishonin durante o exílio na Ilha de Sado.</p>
-    <div class="quote">O espírito de procura começa quando a busca deixa de ser uma intenção abstrata e se transforma em uma decisão que orienta nossas ações.</div>
+    <p class="lead">Quero propor uma abordagem que vá além de explicar o conteúdo doutrinário do Gosho. Para compreender verdadeiramente a força dessa carta, precisamos imaginar o Japão de 1272, a situação política, as condições do exílio de Nichiren Daishonin, a posição social das mulheres, as dificuldades de uma viagem entre Kamakura e Sado e, principalmente, o que significava uma pessoa atravessar tudo isso para encontrar seu mestre.</p>
+    <p>Há uma particularidade extraordinária nesse escrito: <strong>Nichiren não está simplesmente elogiando uma seguidora por sua fé. Ele está reconhecendo nela uma manifestação concreta do espírito de procura que, segundo os ensinamentos budistas, constitui a própria força motriz da iluminação.</strong></p>
+    <p>A carta também tem uma dimensão humana muito bonita. Por trás das referências a Shakyamuni, aos bodisatvas e às escrituras, existe uma mulher, uma mãe e uma filha pequena, enfrentando uma situação familiar difícil e atravessando o Japão em uma época extremamente turbulenta.</p>
+    <div class="opening-gallery" aria-label="Imagens que evocam o cenário histórico">
+     <figure><img src="assets/costa-rochosa.jpg" alt="Costa rochosa banhada pelo mar azul" loading="lazy"><figcaption>O litoral japonês e a travessia até Sado</figcaption></figure>
+     <figure><img src="assets/aldeia-japonesa.jpg" alt="Aldeia japonesa entre montanhas e campos" loading="lazy"><figcaption>Uma paisagem rural entre Kamakura e Sado</figcaption></figure>
+     <figure><img src="assets/kamakura-costa.jpg" alt="Templo japonês diante da costa, com o Monte Fuji ao fundo" loading="lazy"><figcaption>Kamakura e a paisagem costeira</figcaption></figure>
+    </div>
+    <p>Vou organizar o estudo em quatro grandes dimensões:</p>
+    <ol>
+     <li>O cenário histórico: Japão, política e sociedade em 1272.</li>
+     <li>A vida de Nichiren em Sado e as circunstâncias da perseguição.</li>
+     <li>A história da venerável Nichimyo e a profundidade das passagens do Gosho.</li>
+     <li>Uma reflexão aprofundada sobre o espírito de procura, conectando o escrito ao tema de novembro de 2026: <strong>Espírito de Procura.</strong></li>
+    </ol>
    </section>
 
    <section class="card" id="etapa1">
@@ -365,5 +393,23 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
   <br><a class="backtop" href="#topo">Voltar ao início ↑</a>
  </div>
 </div>
+<script>
+(() => {
+ const toggle = document.getElementById('menuToggle');
+ const close = document.getElementById('menuClose');
+ const backdrop = document.getElementById('menuBackdrop');
+ const links = document.querySelectorAll('#study-toc nav a');
+ const setMenu = (open) => {
+  document.body.classList.toggle('menu-open', open);
+  toggle.setAttribute('aria-expanded', String(open));
+  toggle.setAttribute('aria-label', open ? 'Fechar menu do estudo' : 'Abrir menu do estudo');
+ };
+ toggle.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+ close.addEventListener('click', () => setMenu(false));
+ backdrop.addEventListener('click', () => setMenu(false));
+ links.forEach((link) => link.addEventListener('click', () => setMenu(false)));
+ document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
+})();
+</script>
 </body>
 </html>
