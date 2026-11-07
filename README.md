@@ -5,9 +5,9 @@ Estudo responsivo em português, publicado pelo GitHub Pages. O menu de seções
 ## Arquivos
 
 - `index.html`: texto, diagramação e navegação.
-- `assets/`: três imagens locais otimizadas para a abertura.
+- `assets/`: imagens locais otimizadas para a abertura e para as seções sobre o Japão em 1272, Sado e o panorama mundial.
 
-As imagens das páginas 14–17 do suplemento estão embutidas no HTML. Três outras imagens do material complementar continuam carregadas de `meubs.com.br` e dependem da disponibilidade desse site.
+As imagens ampliam ao toque/clique e podem ser fechadas pelo botão ou pela tecla Esc. As páginas 14–17 do suplemento estão embutidas no HTML. Três imagens do material complementar continuam carregadas de `meubs.com.br` e dependem da disponibilidade desse site. As legendas distinguem fotografias atuais de pinturas e representações artísticas.
 
 ## Publicação
 

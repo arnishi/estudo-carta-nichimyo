@@ -43,10 +43,28 @@ body.menu-open .toc{transform:translateX(0);visibility:visible}
 .toc a{display:block;text-decoration:none;font-size:.82rem;color:#43546a;padding:7px 8px;border-radius:9px;line-height:1.35}
 .toc a:hover{background:var(--sky);color:var(--navy)}
 .content{min-width:0}
-.opening-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0}
+.opening-gallery{display:grid;grid-template-columns:1fr;gap:10px;margin:20px 0}
 .opening-gallery figure{margin:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#f7f9fc}
 .opening-gallery img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
 .opening-gallery figcaption{padding:8px 10px;color:var(--muted);font-size:.76rem;line-height:1.35}
+.history-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:16px 0}
+.history-gallery figure{margin:0;overflow:hidden}
+.history-gallery img{display:block;width:100%;height:135px;object-fit:cover;background:#f2f5f8}
+.history-gallery figcaption{font-size:.76rem;line-height:1.4}
+.image-fold{margin:16px 0;border:1px solid var(--line);border-radius:14px;background:#fbfdff;overflow:hidden}
+.image-fold summary{padding:12px 15px;color:var(--navy);font-weight:750;cursor:pointer}
+.image-fold[open] summary{border-bottom:1px solid var(--line)}
+.image-fold .history-gallery{padding:0 12px 12px}
+.world-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0}
+.world-grid .mini{height:100%}
+.source-links{font-size:.82rem;color:var(--muted)}
+.history-gallery img,.opening-gallery img,main figure img{cursor:zoom-in}
+.image-viewer{width:min(94vw,1100px);max-width:none;max-height:92vh;padding:0;border:0;border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 24px 80px rgba(0,0,0,.35)}
+.image-viewer::backdrop{background:rgba(8,18,31,.86)}
+.image-viewer figure{margin:0;border:0;border-radius:0;background:transparent}
+.image-viewer img{display:block;max-width:100%;max-height:calc(92vh - 76px);width:auto;height:auto;margin:auto;object-fit:contain}
+.image-viewer figcaption{padding:10px 16px;color:var(--muted);font-size:.84rem;text-align:center}
+.image-viewer-close{position:sticky;top:8px;float:right;margin:8px 8px -44px 0;z-index:1}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,32px);margin-bottom:18px;box-shadow:var(--shadow)}
 .kicker{color:var(--blue);font-size:.75rem;text-transform:uppercase;letter-spacing:.13em;font-weight:800}
 h2{font-size:clamp(1.45rem,4vw,2rem);line-height:1.2;color:var(--navy);letter-spacing:-.025em;margin:7px 0 16px}
@@ -58,7 +76,7 @@ p{margin:0 0 14px}
 .note strong{color:var(--navy)}
 .quote{margin:20px 0;padding:19px 20px;border-radius:15px;background:#f3f7fc;border:1px solid #dce9f7;color:#173f70;font-size:1.06rem;font-weight:650}
 .quote small{display:block;margin-top:10px;color:var(--muted);font-size:.78rem;font-weight:500}
-.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.grid2{display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0}
 .mini{padding:15px;border:1px solid var(--line);border-radius:14px;background:#fbfdff}
 .mini b{display:block;color:var(--navy);margin-bottom:5px}
 .timeline{border-left:2px solid #c8d9ec;margin:18px 0 18px 8px;padding-left:20px}
@@ -72,7 +90,7 @@ figure img{display:block;width:100%;height:auto;max-height:520px;object-fit:cont
 figcaption{padding:9px 12px;color:var(--muted);font-size:.78rem}
 figure.page-shot{max-width:420px;margin:14px auto}
 figure.page-shot img{max-height:none}
-.two-images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.two-images{display:grid;grid-template-columns:1fr;gap:12px}
 .two-images figure{margin:8px 0}
 .table-wrap{overflow-x:auto;margin:16px 0}
 table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:490px}
@@ -93,12 +111,16 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
  .toc{top:54px;width:min(290px,88vw);padding:14px}
  .menu-backdrop{top:54px}
  .card{border-radius:17px;padding:19px;margin-bottom:13px}
- .grid2,.two-images{grid-template-columns:1fr}
  .topbar-inner{padding:9px 12px}
  .brand{font-size:.66rem;letter-spacing:.08em}
  .menu-toggle{padding:7px 9px}
- .opening-gallery{grid-template-columns:1fr;gap:10px}
- .opening-gallery img{aspect-ratio:16/9}
+}
+@media(min-width:721px){
+ .opening-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+ .history-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+ .history-gallery img{height:180px}
+ .world-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .grid2,.two-images{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media print{
  body{background:white}
@@ -145,6 +167,7 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
     <a href="#etapa1">1 · Japão em 1272</a>
     <a href="#etapa2">2 · Exílio em Sado</a>
     <a href="#etapa3">3 · Crise política</a>
+    <a href="#mundo1272">1272 ao redor do mundo</a>
     <a href="#etapa4">4 · Nichimyo</a>
     <a href="#etapa5">5 · Sete histórias</a>
     <a href="#etapa6">6 · Aplicação</a>
@@ -178,33 +201,101 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
 
    <section class="card" id="etapa1">
     <div class="kicker">Etapa 1 · Contextualização histórica</div>
-    <h2>O Japão em 1272: um país dividido e instável</h2>
-    <p>Em 1272, o Japão vivia o período Kamakura (1185–1333). O poder político e militar estava concentrado no xogunato de Kamakura, enquanto a corte imperial permanecia em Kyoto. Na prática, o governo era conduzido pela regência do clã Hojo.</p>
-    <p>Hojo Tokimune era o regente. Seu governo enfrentava disputas internas, tensões entre grupos de poder e a ameaça externa representada pelo Império Mongol, que exigia submissão do Japão. A primeira invasão mongol ocorreria em 1274; portanto, em 1272, a ameaça já fazia parte do horizonte político, mas a invasão ainda não havia acontecido.</p>
-    <p>O ambiente religioso também era complexo. Escolas como Tendai, Shingon, Terra Pura e Zen tinham influência social e institucional. Templos podiam possuir terras, recursos e relações com grupos políticos. Nichiren criticava aquilo que considerava desvios dos ensinamentos do Sutra do Lótus, enfrentando oposição de instituições religiosas e autoridades.</p>
-    <div class="note"><strong>Uma distinção importante:</strong> o cenário histórico ajuda a compreender a tensão da época, mas não significa que todos os detalhes das narrativas religiosas possam ser tratados como fatos independentes. Quando a informação vem da tradição Nichiren, ela deve ser reconhecida como tal.</div>
-    <h3>Os Três Períodos da Lei</h3>
-    <p>Na interpretação budista tradicional, a história do ensinamento de Shakyamuni é dividida em Primeiro Dia da Lei, Médio Dia da Lei e Últimos Dias da Lei. Nichiren entendia que vivia nos Últimos Dias da Lei, período em que considerava necessário revelar uma prática acessível e adequada às pessoas daquele tempo: Nam-myoho-renge-kyo.</p>
+    <h2>O Japão em 1272: corte imperial, xogunato e poder Hojo</h2>
+    <p>Estamos no período Kamakura (1185–1333), uma época de profundas transformações. Durante séculos, a corte imperial de Kyoto, formada por aristocratas e famílias tradicionais, ocupou o centro da vida política. A partir do final do século XII, porém, os guerreiros samurais ganharam força política e militar.</p>
+    <p>Em 1192, Minamoto no Yoritomo recebeu o título de xogum e consolidou em Kamakura um governo militar. Daí surgiu uma configuração peculiar: o imperador e a corte continuavam em Kyoto com autoridade tradicional e prestígio; o xogum era a figura formal do governo militar; e o clã Hojo exercia grande parte do poder efetivo por meio da regência. Kamakura tornou-se o centro das decisões administrativas e militares.</p>
+    <div class="history-gallery">
+     <figure><img src="assets/pintura-cidade-japonesa.jpg" alt="Pintura tradicional de uma cidade japonesa com edifícios e viajantes" loading="lazy"><figcaption>Imagem artística de uma povoação japonesa; evocação do mundo urbano do período.</figcaption></figure>
+     <figure><img src="assets/japao-cidade-medieval.jpg" alt="Ilustração histórica de uma cidade e de seus habitantes" loading="lazy"><figcaption>Uma cena de vida cotidiana em ilustração tradicional.</figcaption></figure>
+     <figure><img src="assets/armadura-samurai.jpg" alt="Armadura de samurai exposta em museu" loading="lazy"><figcaption>Armadura samurai em exposição: objeto material, não pertencente necessariamente a 1272.</figcaption></figure>
+     <figure><img src="assets/armadura-kabuto.jpg" alt="Detalhe de capacete e armadura japonesa" loading="lazy"><figcaption>Detalhe de uma armadura japonesa em exposição.</figcaption></figure>
+     <figure><img src="assets/samurai-arqueiro.jpg" alt="Representação tradicional de um arqueiro montado japonês" loading="lazy"><figcaption>Representação artística de um guerreiro montado.</figcaption></figure>
+     <figure><img src="assets/japao-guerreiros-1.jpg" alt="Pintura panorâmica de guerreiros japoneses a cavalo" loading="lazy"><figcaption>Pintura de guerreiros: referência visual à sociedade militar, sem atribuição a um episódio específico.</figcaption></figure>
+    </div>
+    <h3>Quem governava o Japão?</h3>
+    <div class="grid2">
+     <div class="mini"><b>Hojo Tokimune (1251–1284)</b>Oitavo regente do xogunato Kamakura. Assumiu a regência em 1268 e era a principal autoridade política do governo militar em 1272.</div>
+     <div class="mini"><b>Hojo Tokisuke</b>Meio-irmão mais velho de Tokimune. Tinha posição importante em Kyoto e se envolveu numa disputa de poder dentro do clã Hojo, que culminou na crise de fevereiro de 1272.</div>
+    </div>
+    <p>O país vivia tensões internas e também uma ameaça externa. Kublai Khan, governante mongol e da China Yuan, enviara exigências de submissão ao Japão. Em 1272, a invasão ainda não havia acontecido; a primeira tentativa de invasão mongol ocorreu em 1274.</p>
+    <h3>Religião, sociedade e a ideia dos Últimos Dias da Lei</h3>
+    <p>O budismo não era apenas uma prática individual. Grandes templos possuíam terras e recursos, mantinham relações com autoridades e podiam mobilizar grupos armados. Entre as tradições influentes estavam Tendai, Shingon, Terra Pura (Jodo) e Zen, com diferentes interpretações sobre o caminho para a iluminação.</p>
+    <p>A escola Terra Pura, associada ao buda Amida, difundia a recitação do Nembutsu e a aspiração de renascer em sua Terra Pura. Sua popularidade se relacionava à promessa de um caminho acessível num tempo percebido por muitos como de declínio espiritual.</p>
+    <div class="history-gallery">
+     <figure><img src="assets/terra-pura-mandala.jpg" alt="Pintura budista que representa a Terra Pura" loading="lazy"><figcaption>Mandala budista da Terra Pura: imagem do universo religioso japonês.</figcaption></figure>
+     <figure><img src="assets/monges-em-pintura.jpg" alt="Cena de monges em uma pintura budista japonesa" loading="lazy"><figcaption>Pintura religiosa tradicional, usada como referência visual ao budismo medieval.</figcaption></figure>
+     <figure><img src="assets/templo-japones.jpg" alt="Complexo de edifícios religiosos japoneses entre árvores" loading="lazy"><figcaption>Templo japonês atual; ilustra a presença histórica das instituições religiosas.</figcaption></figure>
+     <figure><img src="assets/narrativa-religiosa.jpg" alt="Pintura narrativa japonesa com figuras religiosas" loading="lazy"><figcaption>Imagem narrativa de tema religioso; a cena não é identificada aqui como um evento específico.</figcaption></figure>
+     <figure><img src="assets/assembleia-japao-medieval.jpg" alt="Pintura de uma assembleia em ambiente japonês medieval" loading="lazy"><figcaption>Assembleia retratada em pintura; evocação das comunidades e instituições da época.</figcaption></figure>
+     <figure><img src="assets/debate-religioso.jpg" alt="Pintura tradicional de monges reunidos em debate" loading="lazy"><figcaption>Reunião de religiosos em pintura tradicional, referência ao debate público entre escolas.</figcaption></figure>
+    </div>
+    <p>Na interpretação budista tradicional, a história do ensinamento de Shakyamuni é dividida em Primeiros, Médios e Últimos Dias da Lei. Nichiren entendia que vivia nos Últimos Dias da Lei e que era necessário revelar uma prática capaz de permitir às pessoas manifestar o estado de buda em meio às dificuldades concretas.</p>
+    <div class="note"><strong>Contexto e interpretação:</strong> contestar uma escola influente podia atingir interesses religiosos, econômicos e políticos. A leitura doutrinária dos Últimos Dias da Lei pertence à tradição budista; os acontecimentos políticos são apresentados como contexto histórico, sem transformar afirmações religiosas em fatos independentes.</div>
    </section>
 
    <section class="card" id="etapa2">
     <div class="kicker">Etapa 2 · A perseguição e o exílio</div>
     <h2>De Tatsunokuchi à Ilha de Sado</h2>
-    <p>Em 12 de setembro de 1271, Nichiren foi preso por agentes do governo, sob a liderança de Hei no Saemon-no-jo Yoritsuna, e conduzido para ser executado em Tatsunokuchi. A execução não se concretizou. O episódio é conhecido na tradição Nichiren como a Perseguição de Tatsunokuchi.</p>
-    <p>Depois, Nichiren permaneceu sob custódia em Echi, na residência de Homma Shigetsura. Em 10 de outubro de 1271 partiu para o exílio e chegou à Ilha de Sado em 1º de novembro.</p>
+    <p>Em 1271, Nichiren estava em Kamakura, propagando seus ensinamentos e fazendo advertências ao governo. Sua postura provocava oposição de líderes religiosos e autoridades. Um dos funcionários envolvidos era Hei no Saemon-no-jo Yoritsuna.</p>
+    <p>Na noite de 12 de setembro, soldados invadiram sua residência e o prenderam. Segundo relatos preservados nos escritos de Nichiren, ele foi levado a Tatsunokuchi para ser executado por decapitação. A execução não aconteceu. A tradição Nichiren relata que uma manifestação luminosa no céu interrompeu o ato; é importante distinguir essa interpretação religiosa do fato político da tentativa de execução e seu fracasso.</p>
+    <div class="history-gallery">
+     <figure><img src="assets/nichiren-ilustracao.jpg" alt="Ilustração contemporânea de Nichiren Daishonin" loading="lazy"><figcaption>Representação artística moderna de Nichiren Daishonin.</figcaption></figure>
+     <figure><img src="assets/estatua-nichiren.jpg" alt="Estátua contemporânea de Nichiren em recinto religioso japonês" loading="lazy"><figcaption>Estátua de Nichiren em um templo; monumento atual, não imagem contemporânea ao século XIII.</figcaption></figure>
+     <figure><img src="assets/peregrinacao-medieval.jpg" alt="Pintura tradicional de viajantes em uma estrada japonesa" loading="lazy"><figcaption>Imagem artística de viajantes; evocação dos deslocamentos no Japão medieval.</figcaption></figure>
+    </div>
+    <p>O governo decidiu enviá-lo ao exílio em Sado, mas a partida não foi imediata. Nichiren permaneceu cerca de um mês sob custódia na residência de Homma Shigetsura, em Echi. Em 10 de outubro de 1271, partiu escoltado e chegou à ilha em 1º de novembro.</p>
+    <h3>Sado: distância, frio e isolamento</h3>
+    <p>A Ilha de Sado fica no Mar do Japão, a noroeste da ilha principal, e hoje pertence à província de Niigata. Naquele período era considerada distante, difícil de alcançar e também utilizada como lugar de exílio. Ser enviado para lá significava afastar-se de familiares, seguidores, recursos e redes de proteção. O inverno podia trazer frio, neve e ventos intensos.</p>
+    <div class="history-gallery">
+     <figure><img src="assets/costa-inverno-sado.jpg" alt="Costa japonesa no inverno com mar agitado e montanhas nevadas" loading="lazy"><figcaption>Costa de inverno fornecida como referência visual; não é apresentada como registro da rota de 1271.</figcaption></figure>
+     <figure><img src="assets/costa-inverno.jpg" alt="Litoral rochoso e mar cinzento no inverno" loading="lazy"><figcaption>Paisagem costeira de inverno; imagem atual usada para evocar a dureza do deslocamento.</figcaption></figure>
+     <figure><img src="assets/sado-paisagem-inverno.jpg" alt="Costa rochosa coberta de neve" loading="lazy"><figcaption>Litoral nevado, evocação das condições climáticas de uma ilha no Mar do Japão.</figcaption></figure>
+    </div>
     <h3>Tsukahara: o primeiro abrigo</h3>
-    <p>Seu primeiro alojamento foi o Sammai-do, em Tsukahara: uma construção deteriorada, situada em uma área de sepultamentos. As condições descritas nas fontes da tradição eram severas: frio, neve, escassez de alimentos e roupas, além da hostilidade de seguidores de outras escolas religiosas.</p>
-    <p>Em janeiro de 1272, ocorreu o debate de Tsukahara, no qual Nichiren confrontou sacerdotes que foram até o local. Em abril daquele ano, ele foi transferido para Ichinosawa, mas continuou exilado e sujeito a riscos.</p>
+    <p>Seu primeiro alojamento foi o Sammai-do, em Tsukahara: uma pequena construção sustentada por quatro estacas, com telhado e paredes deteriorados, situada numa área usada para abandonar cadáveres de pessoas pobres e criminosos. Os relatos descrevem frio, neve, falta de alimentos e roupas e hostilidade de seguidores de outras escolas.</p>
+    <div class="history-gallery">
+     <figure><img src="assets/sammai-do-neve.jpg" alt="Edificação tradicional japonesa sob neve" loading="lazy"><figcaption>Edificação de aparência tradicional no inverno; não é identificada como a estrutura original do século XIII.</figcaption></figure>
+     <figure><img src="assets/sammai-do-pintura.jpg" alt="Pintura de um abrigo coberto de neve com a inscrição Sammai-do de Tsukahara" loading="lazy"><figcaption>Representação artística do Sammai-do em Tsukahara durante o exílio.</figcaption></figure>
+     <figure><img src="assets/museu-tsukahara-debate.jpg" alt="Reconstituição museográfica de Nichiren em um espaço de exposição" loading="lazy"><figcaption>Reconstituição museográfica associada à memória do debate de Tsukahara.</figcaption></figure>
+     <figure><img src="assets/sitio-tsukahara.jpg" alt="Paisagem verde do sítio histórico de Tsukahara" loading="lazy"><figcaption>Paisagem atual do sítio histórico; não é uma reconstituição de 1272.</figcaption></figure>
+     <figure><img src="assets/marco-tsukahara.jpg" alt="Monumento que identifica o sítio histórico de Tsukahara" loading="lazy"><figcaption>Marco memorial do sítio de Tsukahara, em Sado.</figcaption></figure>
+     <figure><img src="assets/mapa-tsukahara.jpg" alt="Mapa dos lugares de Sado relacionados a Nichiren e ao sítio de Tsukahara" loading="lazy"><figcaption>Mapa localiza Tsukahara e outros lugares relacionados à trajetória de Nichiren em Sado.</figcaption></figure>
+     <figure><img src="assets/templo-referencia.jpg" alt="Edifício religioso japonês de madeira" loading="lazy"><figcaption>Edifício religioso japonês atual; imagem de referência, não identificada como moradia de Nichiren.</figcaption></figure>
+    </div>
+    <p>Em janeiro de 1272, sacerdotes de diferentes escolas foram até o local para confrontá-lo num debate que ficou conhecido como Debate de Tsukahara. Em abril, Nichiren foi transferido para uma residência em Ichinosawa, que oferecia condições melhores, mas ele continuava exilado e sob risco. É nesse contexto que se situa a carta para Nichimyo, escrita em 25 de maio de 1272.</p>
     <div class="quote">A carta a Nichimyo foi escrita em um contexto no qual o próprio Nichiren vivia sob restrições, isolamento e perigo. A visita da discípula, portanto, não foi um encontro rotineiro.</div>
    </section>
 
    <section class="card" id="etapa3">
     <div class="kicker">Etapa 3 · A crise política</div>
     <h2>A Perturbação do Segundo Mês de 1272</h2>
-    <p>Em fevereiro de 1272 ocorreu uma disputa interna pelo poder, conhecida como a Perturbação do Segundo Mês. O conflito envolveu Hojo Tokisuke, meio-irmão de Hojo Tokimune, e facções ligadas à regência.</p>
-    <p>Os acontecimentos incluíram a repressão a apoiadores de Tokisuke em Kamakura e a morte dele em Kyoto. Não se tratou de uma invasão estrangeira, mas de uma crise interna do governo militar.</p>
-    <p>Esse episódio é relevante porque mostra que Nichiren escrevia em meio a uma sociedade politicamente instável. A ameaça mongol, as disputas de poder e a repressão religiosa compunham um ambiente de insegurança.</p>
-    <div class="note"><strong>Para a leitura do Gosho:</strong> o contexto não é um pano de fundo decorativo. Ele ajuda a perceber a dimensão da decisão de Nichimyo: ela viajou para encontrar alguém que estava exilado, em uma região distante e perigosa, num período de instabilidade nacional.</div>
+    <p>Em fevereiro de 1272 ocorreu a Perturbação do Segundo Mês, uma disputa interna pelo poder envolvendo Hojo Tokisuke, meio-irmão mais velho de Tokimune. Tokisuke tinha ligações com a administração em Kyoto, enquanto Tokimune exercia a regência em Kamakura.</p>
+    <p>No dia 11, forças do governo mataram apoiadores de Tokisuke em Kamakura. No dia 15, Tokisuke também foi morto em Kyoto. Não foi uma invasão estrangeira, mas uma grave crise dentro da família que governava o Japão.</p>
+    <div class="history-gallery">
+     <figure><img src="assets/japao-guerreiros-2.jpg" alt="Pintura panorâmica de guerreiros japoneses a cavalo" loading="lazy"><figcaption>Pintura de combate japonês; ilustração histórica, não representação identificada da Perturbação de 1272.</figcaption></figure>
+     <figure><img src="assets/cavaleiros-pintura.jpg" alt="Pintura tradicional de guerreiros montados em confronto" loading="lazy"><figcaption>Outra representação artística de guerreiros, sem atribuição a esta disputa específica.</figcaption></figure>
+     <figure><img src="assets/invasao-mongol-arte.jpg" alt="Gravura japonesa posterior que representa uma invasão mongol" loading="lazy"><figcaption>Representação artística posterior das invasões mongóis, que começariam no Japão em 1274.</figcaption></figure>
+     <figure><img src="assets/kublai-khan.jpg" alt="Retrato tradicional de Kublai Khan" loading="lazy"><figcaption>Retrato tradicional de Kublai Khan, governante mongol ligado às exigências feitas ao Japão.</figcaption></figure>
+    </div>
+    <div class="note"><strong>Para a leitura do Gosho:</strong> no trecho final, Nichiren menciona que a nação vinha enfrentando rebeldes e aponta para o conflito de 11 de fevereiro. Para ele, a crise interna confirmava uma leitura das previsões budistas sobre a perseguição ao devoto do Sutra do Lótus. A ameaça de invasão mongol era outra preocupação, mas essa interpretação religiosa deve ser distinguida da descrição histórica dos acontecimentos.</div>
+   </section>
+
+   <section class="card" id="mundo1272">
+    <div class="kicker">Uma janela para o mundo</div>
+    <h2>O que também acontecia em 1272?</h2>
+    <p>O Japão de Nichiren fazia parte de um mundo conectado por impérios, comércio e conflitos. Três cenas ajudam a situar aquele ano em outras regiões:</p>
+    <div class="world-grid">
+     <div class="mini"><b>China e Ásia Oriental</b>Kublai Khan proclamara a dinastia Yuan em 1271. Em 1272, a guerra contra a dinastia Song do Sul continuava; a conquista mongol só se completaria em 1279. O poder de Kublai ajuda a contextualizar as exigências dirigidas ao Japão.</div>
+     <div class="mini"><b>Terra Santa e Mediterrâneo Oriental</b>A expedição de Eduardo, príncipe da Inglaterra, permanecia na região em 1271–1272. Em maio de 1272, o sultão mameluco Baybars e o rei Hugo III de Chipre e Jerusalém firmaram uma trégua; Eduardo deixou a região mais tarde naquele ano, após sobreviver a uma tentativa de assassinato.</div>
+     <div class="mini"><b>Inglaterra e Europa</b>Henrique III morreu em 16 de novembro de 1272. Seu filho Eduardo, ainda fora da Inglaterra, sucedeu-o como Eduardo I e foi proclamado rei enquanto retornava da cruzada.</div>
+    </div>
+    <p>Esses episódios não formam uma única história global, mas mostram mudanças simultâneas: expansão Yuan no leste asiático, disputas entre mamelucos e cruzados no Mediterrâneo e uma sucessão dinástica na Inglaterra.</p>
+    <div class="note"><strong>Uma conexão direta com o estudo:</strong> a pressão mongol não era uma ameaça imaginária para o Japão. O primeiro ataque viria em 1274, dois anos depois da carta. A imagem de Kublai Khan e a gravura das invasões são representações artísticas posteriores, não registros visuais dos acontecimentos de 1272.</div>
+    <ul class="source-links">
+     <li><a href="https://south.npm.gov.tw/ENGLISH/ExhibitionsDetailE003110.aspx?Cond=1c5670c9-d992-404a-8f8a-7b9427473b69&State=0&appname=Exhibition3112EN" target="_blank" rel="noopener">National Palace Museum — Kublai Khan e a fundação da dinastia Yuan</a></li>
+     <li><a href="https://www.royal.uk/edward-i-longshanks?page=1" target="_blank" rel="noopener">The Royal Family — Eduardo I, a cruzada e a morte de Henrique III</a></li>
+     <li><a href="https://research-repository.st-andrews.ac.uk/bitstream/handle/10023/11414/BruceBeebePhDThesis.pdf?isAllowed=y&sequence=2" target="_blank" rel="noopener">Universidade de St Andrews — pesquisa acadêmica sobre Eduardo I e a cruzada</a></li>
+    </ul>
    </section>
 
    <section class="card" id="etapa4">
@@ -381,7 +472,7 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
      <li><strong>Nova Revolução Humana:</strong> v. 26, cap. “Avanço Intrépido”, p. 331–333, conforme a referência impressa no suplemento.</li>
      <li><strong>Hiromi Nozaki:</strong> história adaptada de *Nova Revolução Humana*, v. 27, p. 297–304, conforme nota do artigo.</li>
     </ul>
-    <p>As imagens do artigo complementar são carregadas a partir do site Brasil Seikyo. As páginas 14–17 do suplemento foram incorporadas a este HTML como imagens locais embutidas, para que permaneçam disponíveis mesmo sem conexão.</p>
+    <p>As imagens da abertura e das seções históricas estão incluídas localmente no repositório. Pinturas, retratos e reconstituições são identificados como representações artísticas ou atuais, sem tratá-los como registros fotográficos dos fatos. As páginas 14–17 do suplemento estão embutidas neste HTML; três imagens do artigo complementar continuam carregadas a partir do site Brasil Seikyo.</p>
     <p><a href="https://meubs.com.br/" target="_blank" rel="noopener">Acessar o site Brasil Seikyo</a></p>
     <hr>
     <p class="ref-list"><strong>Nota de leitura histórica:</strong> os dados biográficos sobre Nichimyo são escassos. O texto evita atribuir a ela informações que as fontes fornecidas não confirmam. As narrativas das sete vidas passadas são apresentadas como relatos tradicionais budistas, não como fatos históricos verificáveis.</p>
@@ -409,6 +500,38 @@ hr{border:0;border-top:1px solid var(--line);margin:22px 0}
  backdrop.addEventListener('click', () => setMenu(false));
  links.forEach((link) => link.addEventListener('click', () => setMenu(false)));
  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
+})();
+(() => {
+ const viewer = document.createElement('dialog');
+ viewer.className = 'image-viewer';
+ viewer.setAttribute('aria-label', 'Imagem ampliada');
+ viewer.innerHTML = '<button class="small-btn image-viewer-close" type="button" aria-label="Fechar imagem ampliada">Fechar ✕</button><figure><img alt=""><figcaption></figcaption></figure>';
+ document.body.appendChild(viewer);
+ const largeImage = viewer.querySelector('img');
+ const caption = viewer.querySelector('figcaption');
+ const closeButton = viewer.querySelector('button');
+ let previousFocus = null;
+ const closeViewer = () => { if (viewer.open) viewer.close(); };
+ closeButton.addEventListener('click', closeViewer);
+ viewer.addEventListener('click', (event) => { if (event.target === viewer) closeViewer(); });
+ viewer.addEventListener('close', () => { if (previousFocus) previousFocus.focus(); });
+ document.querySelectorAll('main img').forEach((image) => {
+  image.tabIndex = 0;
+  image.setAttribute('role', 'button');
+  image.setAttribute('aria-label', `Ampliar imagem: ${image.alt || 'imagem do estudo'}`);
+  const openViewer = (event) => {
+   event.preventDefault();
+   previousFocus = image;
+   largeImage.src = image.currentSrc || image.src;
+   largeImage.alt = image.alt || '';
+   const figureCaption = image.closest('figure')?.querySelector('figcaption')?.textContent?.trim();
+   caption.textContent = figureCaption || image.alt || '';
+   viewer.showModal();
+   closeButton.focus();
+  };
+  image.addEventListener('click', openViewer);
+  image.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') openViewer(event); });
+ });
 })();
 </script>
 </body>
